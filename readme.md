@@ -10,6 +10,8 @@ Deployment details:
 - Cloned the git repo on that instance, and run the project in a similar way as in local systems.
 - IP : http://16.171.176.127:3000
 
+Demo video link: https://www.loom.com/share/e9b9e2e1d974427fb4dab12c5668f656?sid=b8bc954b-f4e1-42d0-a4bf-5aae6f9b1039
+
 
 -----------------------------------------------------------------------------------------------------------
 API Endpoints

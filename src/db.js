@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const ObjectId = mongoose.Types.ObjectId;
 
 let bookSchema = new mongoose.Schema({
     title:{type: String, required: true},
@@ -22,11 +23,16 @@ const connectDB = async(mongoUrl) => {
     });
 }
 
+const castToID = (str) => {
+    return new ObjectId(str);
+}
+
 module.exports = {
     connectDB,
     addBookEntry,
     getBookById,
     getAllBooks,
     updateBook,
-    deleteBook
+    deleteBook,
+    castToID
 }

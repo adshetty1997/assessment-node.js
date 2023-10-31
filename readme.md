@@ -8,6 +8,7 @@ Steps to run project in local system:
 Deployment details:
 - I have started a single instance on AWS
 - Cloned the git repo on that instance, and run the project in a similar way as in local systems.
+- IP : http://16.171.176.127:3000
 
 
 -----------------------------------------------------------------------------------------------------------

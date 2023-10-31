@@ -1,10 +1,12 @@
-const { getBookById, deleteBook, updateBook, addBookEntry, getAllBooks } = require("./db");
+const { getBookById, deleteBook, updateBook, addBookEntry, getAllBooks, castToID } = require("./db");
 
+// APIs
 let getBooksList = async(req, res) => {
     let id = req.params.id;
     try{
         let resp;
         if(id){
+            id = checkObjectId(id);
             resp = await getBookById(id);
             if(!resp){
                 throw new Error("Book not found.");
@@ -50,6 +52,7 @@ let removeBook = async(req, res) => {
         if(!!!id){
             throw new Error("Book id not provided.");
         }
+        id = checkObjectId(id);
         let resp = await deleteBook(id);
         if(resp.deletedCount==0){
             throw new Error("No entry found for given book ID.");
@@ -72,6 +75,7 @@ let updateBookDetails = async(req, res) => {
         else if((Object.keys(update)).length<1){
             throw new Error("No info for update provided.");
         }
+        id = checkObjectId(id);
         let resp = await updateBook(id,update);
         if(!resp){
             throw new Error("No entry found for given book ID.");
@@ -81,6 +85,15 @@ let updateBookDetails = async(req, res) => {
     }
     catch(error){
         res.status(400).send({message:error.message});
+    }
+}
+
+// HELPER FUNCTION
+const checkObjectId = (id) => {
+    try{
+        return castToID(id);
+    }catch(error){
+        throw new Error("Invalid id");
     }
 }
 
